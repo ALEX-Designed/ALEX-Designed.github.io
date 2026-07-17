@@ -3,680 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Alex Stream - Tu mejor entretenimiento. Streaming, recargas y tecnología al mejor precio.">
     <title>Alex Stream | Streaming y Recargas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { 
-            --primary-blue: #2563eb;
-            --primary-red: #dc2626;
-            --primary-purple: #7c3aed;
-            --primary-orange: #f97316;
-            --primary-pink: #ec4899;
-            --claro-red: #ea0033;
-            --movistar-green: #00a859;
-            --cnt-blue: #0072c6;
-            --tuenti-purple: #e10098;
-            --aki-orange: #ff6b00;
-            --maxi-purple: #6b2d8b;
-            --eeasa-blue: #0066cc;
-            --emapa-blue: #00a8e1;
-            --dark: #1f2937;
-            --light: #f9fafb;
-            --gray: #6b7280;
-            --success: #10b981;
-        }
-        body { font-family: 'Poppins', sans-serif; background: var(--light); color: var(--dark); line-height: 1.6; }
-        
-        header { 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); 
-            color: white; 
-            padding: 1rem 0; 
-            position: fixed; 
-            width: 100%; 
-            top: 0; 
-            z-index: 1000; 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15); 
-        }
-        .container { max-width: 1300px; margin: 0 auto; padding: 0 20px; }
-        nav { display: flex; justify-content: space-between; align-items: center; }
-        .logo { display: flex; align-items: center; gap: 15px; }
-        .logo img { width: 50px; height: 50px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .logo-text h1 { font-size: 1.5rem; font-weight: 800; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
-        .logo-text span { font-size: 0.75rem; opacity: 0.95; }
-        .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
-        .nav-links a { color: white; text-decoration: none; font-weight: 600; transition: all 0.3s; }
-        .nav-links a:hover { transform: translateY(-2px); text-shadow: 0 2px 10px rgba(255,255,255,0.5); }
-        .whatsapp-btn { 
-            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); 
-            padding: 0.75rem 1.5rem; 
-            border-radius: 50px; 
-            display: flex; 
-            align-items: center; 
-            gap: 0.5rem; 
-            animation: pulse 2s infinite;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            font-weight: 700;
-        }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-        
-        .hero { 
-            margin-top: 80px; 
-            padding: 5rem 0; 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #fa709a 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            color: white; 
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .hero h2 { font-size: 3rem; margin-bottom: 1rem; font-weight: 800; text-shadow: 3px 3px 6px rgba(0,0,0,0.3); position: relative; }
-        .hero p { font-size: 1.3rem; margin-bottom: 2.5rem; opacity: 0.98; font-weight: 500; position: relative; }
-        .cta-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; position: relative; }
-        .btn { 
-            padding: 1.2rem 2.5rem; 
-            border-radius: 50px; 
-            text-decoration: none; 
-            font-weight: 700; 
-            transition: all 0.3s; 
-            display: inline-flex; 
-            align-items: center; 
-            gap: 0.7rem; 
-            cursor: pointer; 
-            border: none;
-            font-size: 1.05rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-        .btn-primary { background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%); color: var(--primary-purple); }
-        .btn-secondary { background: rgba(255,255,255,0.2); color: white; border: 3px solid white; backdrop-filter: blur(10px); }
-        .btn:hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
-        
-        .stats { padding: 4rem 0; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem; text-align: center; }
-        .stat-item { background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.3s; }
-        .stat-item:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
-        .stat-item h3 { font-size: 3rem; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; font-weight: 800; }
-        .stat-item p { color: var(--gray); font-weight: 600; font-size: 1.05rem; }
-        
-        .products { padding: 5rem 0; background: white; }
-        .section-title { text-align: center; margin-bottom: 3rem; }
-        .section-title h2 { font-size: 2.5rem; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem; font-weight: 800; }
-        .section-title p { color: var(--gray); font-size: 1.15rem; }
-        .categories { display: flex; gap: 1rem; justify-content: center; margin-bottom: 3rem; flex-wrap: wrap; }
-        .category-btn { 
-            padding: 0.75rem 2rem; 
-            border: 3px solid var(--primary-purple); 
-            background: white; 
-            color: var(--primary-purple); 
-            border-radius: 50px; 
-            cursor: pointer; 
-            font-weight: 700; 
-            transition: all 0.3s;
-            font-size: 0.95rem;
-        }
-        .category-btn.active, .category-btn:hover { 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-            color: white;
-            border-color: transparent;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-        }
-        
-        .operator-tabs { 
-            display: flex; 
-            gap: 1rem; 
-            justify-content: center; 
-            margin-bottom: 2.5rem; 
-            flex-wrap: wrap;
-        }
-        .operator-btn {
-            padding: 0.75rem 1.8rem;
-            border: 2px solid #e5e7eb;
-            background: white;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 700;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .operator-btn.active { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
-        .operator-btn.claro.active { background: var(--claro-red); color: white; border-color: var(--claro-red); }
-        .operator-btn.movistar.active { background: var(--movistar-green); color: white; border-color: var(--movistar-green); }
-        .operator-btn.tuenti.active { background: var(--tuenti-purple); color: white; border-color: var(--tuenti-purple); }
-        .operator-btn.aki.active { background: var(--aki-orange); color: white; border-color: var(--aki-orange); }
-        .operator-btn.maxi.active { background: var(--maxi-purple); color: white; border-color: var(--maxi-purple); }
-        .operator-btn.cnt.active { background: var(--cnt-blue); color: white; border-color: var(--cnt-blue); }
-        .operator-btn.utilities.active { background: var(--eeasa-blue); color: white; border-color: var(--eeasa-blue); }
-        
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
-        .product-card { 
-            background: white; 
-            border-radius: 20px; 
-            overflow: hidden; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12); 
-            transition: all 0.4s; 
-            position: relative;
-            border: 2px solid transparent;
-        }
-        .product-card:hover { 
-            transform: translateY(-15px) scale(1.02); 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-            border-color: var(--primary-purple);
-        }
-        .product-badge { 
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white; 
-            padding: 0.5rem 1rem; 
-            border-radius: 50px; 
-            font-size: 0.8rem; 
-            font-weight: 700; 
-            z-index: 10;
-            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
-        }
-        .product-image { 
-            height: 200px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: white;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .product-image .fallback-icon {
-            font-size: 5rem;
-            position: absolute;
-        }
-        .operator-tag {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: rgba(255,255,255,0.95);
-            color: var(--dark);
-            padding: 0.35rem 0.85rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            z-index: 10;
-        }
-        .product-info { padding: 1.75rem; }
-        .product-category { 
-            color: var(--primary-purple); 
-            font-size: 0.8rem; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            margin-bottom: 0.5rem;
-            letter-spacing: 1px;
-        }
-        .product-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--dark); }
-        .product-description { color: var(--gray); font-size: 0.9rem; margin-bottom: 1rem; line-height: 1.5; }
-        .product-features {
-            background: #f9fafb;
-            padding: 0.75rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            font-size: 0.85rem;
-            color: var(--dark);
-        }
-        .product-features i { color: var(--success); margin-right: 0.3rem; }
-        .product-footer { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding-top: 1rem; 
-            border-top: 2px solid #e5e7eb;
-        }
-        .product-price { 
-            font-size: 2rem; 
-            font-weight: 800; 
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .product-price span { 
-            font-size: 0.95rem; 
-            color: var(--gray); 
-            text-decoration: line-through;
-            margin-left: 0.5rem;
-            -webkit-text-fill-color: var(--gray);
-        }
-        .buy-btn { 
-            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-            color: white; 
-            padding: 0.9rem 1.5rem; 
-            border-radius: 50px; 
-            text-decoration: none; 
-            font-weight: 700; 
-            transition: all 0.3s; 
-            display: inline-flex; 
-            align-items: center; 
-            gap: 0.5rem;
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-            font-size: 0.9rem;
-        }
-        .buy-btn:hover { 
-            transform: scale(1.08); 
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
-        }
-        
-        .features { padding: 5rem 0; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 2.5rem; }
-        .feature-card { text-align: center; padding: 2.5rem; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.3s; }
-        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
-        .feature-icon { width: 100px; height: 100px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; color: white; font-size: 2.5rem; box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4); }
-        .feature-card h3 { font-size: 1.4rem; margin-bottom: 0.75rem; color: var(--dark); font-weight: 700; }
-        .feature-card p { color: var(--gray); line-height: 1.7; }
-        
-        footer { background: linear-gradient(135deg, #1f2937 0%, #111827 100%); color: white; padding: 4rem 0 2rem; }
-        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 3rem; margin-bottom: 3rem; }
-        .footer-section h3 { margin-bottom: 1.25rem; color: #f5576c; font-size: 1.3rem; font-weight: 700; }
-        .footer-section p, .footer-section a { color: #d1d5db; text-decoration: none; line-height: 2.2; transition: all 0.3s; }
-        .footer-section a:hover { color: #f5576c; padding-left: 5px; }
-        .social-links { display: flex; gap: 1rem; margin-top: 1.5rem; }
-        .social-links a { width: 50px; height: 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s; font-size: 1.3rem; }
-        .social-links a:hover { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); transform: translateY(-5px) rotate(360deg); }
-        .footer-bottom { text-align: center; padding-top: 2.5rem; border-top: 1px solid #374151; color: #9ca3af; font-weight: 500; }
-        
-        .mobile-menu { display: none; font-size: 1.5rem; cursor: pointer; }
-        @media (max-width: 768px) { 
-            .nav-links { display: none; } 
-            .mobile-menu { display: block; } 
-            .hero h2 { font-size: 2rem; } 
-            .hero p { font-size: 1.1rem; } 
-            .products-grid { grid-template-columns: 1fr; }
-            .btn { padding: 1rem 2rem; font-size: 0.95rem; }
-        }
-    </style>
 </head>
-<body>
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <img src="logo.png" alt="Alex Stream Logo">
-                <div class="logo-text">
-                    <h1>ALEX STREAM</h1>
-                    <span>Tu mejor entretenimiento</span>
-                </div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#productos">Productos</a></li>
-                <li><a href="#recargas">Recargas</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-                <li><a href="https://wa.me/593987360827" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
-            </ul>
-            <div class="mobile-menu"><i class="fas fa-bars"></i></div>
-        </nav>
+<body class="bg-gray-900 text-white font-sans">
+
+    <!-- Header -->
+    <header class="bg-gray-800 p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-400">ALEX STREAM</h1>
+            <nav class="space-x-4 hidden md:block">
+                <a href="#inicio" class="hover:text-blue-400">Inicio</a>
+                <a href="#productos" class="hover:text-blue-400">Productos</a>
+                <a href="#contacto" class="hover:text-blue-400">Contacto</a>
+                <a href="admin.html" class="bg-blue-600 px-3 py-1 rounded hover:bg-blue-700">Panel Admin</a>
+            </nav>
+        </div>
     </header>
 
-    <section class="hero" id="inicio">
-        <div class="container">
-            <h2>🎬 Streaming, Recargas y Servicios</h2>
-            <p>Disfruta de tus plataformas favoritas y paga tus servicios con garantía y soporte 24/7</p>
-            <div class="cta-buttons">
-                <a href="#productos" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Ver Productos</a>
-                <a href="https://wa.me/593987360827" class="btn btn-secondary" target="_blank"><i class="fab fa-whatsapp"></i> Contáctanos</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item"><h3>1000+</h3><p>Clientes Felices</p></div>
-                <div class="stat-item"><h3>24/7</h3><p>Soporte Disponible</p></div>
-                <div class="stat-item"><h3>100%</h3><p>Garantía Asegurada</p></div>
-                <div class="stat-item"><h3>5+</h3><p>Años de Experiencia</p></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="products" id="productos">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nuestros Productos y Servicios</h2>
-                <p>Elige el que más te guste y comienza a disfrutar</p>
-            </div>
-            <div class="categories">
-                <button class="category-btn active" onclick="filterProducts('all')">Todos</button>
-                <button class="category-btn" onclick="filterProducts('streaming')">Streaming</button>
-                <button class="category-btn" onclick="filterProducts('recargas')">Recargas</button>
-                <button class="category-btn" onclick="filterProducts('utilities')">Servicios Básicos</button>
-                <button class="category-btn" onclick="filterProducts('musica')">Música</button>
-                <button class="category-btn" onclick="filterProducts('giftcard')">Gift Cards</button>
-            </div>
+    <!-- Hero Section -->
+    <section id="inicio" class="bg-gradient-to-r from-blue-900 to-purple-900 py-20 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">🎬 Streaming, Recargas y Servicios</h2>
+            <p class="text-xl mb-8 text-gray-300">Disfruta de tus plataformas favoritas y paga tus servicios con garantía y soporte 24/7</p>
+            <a href="https://wa.me/593987360827" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full inline-flex items-center">
+                <i class="fab fa-whatsapp mr-2"></i> Contáctanos
+            </a>
             
-            <div class="operator-tabs" id="operatorTabs" style="display:none;">
-                <button class="operator-btn utilities active" onclick="filterOperator('all')"><i class="fas fa-list"></i> Todos</button>
-                <button class="operator-btn claro" onclick="filterOperator('claro')"><i class="fas fa-signal"></i> Claro</button>
-                <button class="operator-btn movistar" onclick="filterOperator('movistar')"><i class="fas fa-signal"></i> Movistar</button>
-                <button class="operator-btn tuenti" onclick="filterOperator('tuenti')"><i class="fas fa-signal"></i> Tuenti</button>
-                <button class="operator-btn aki" onclick="filterOperator('aki')"><i class="fas fa-signal"></i> Aki</button>
-                <button class="operator-btn maxi" onclick="filterOperator('maxi')"><i class="fas fa-signal"></i> Maxi</button>
-                <button class="operator-btn cnt" onclick="filterOperator('cnt')"><i class="fas fa-signal"></i> CNT</button>
-                <button class="operator-btn utilities" onclick="filterOperator('eeasa')"><i class="fas fa-bolt"></i> Luz (EEASA)</button>
-                <button class="operator-btn utilities" onclick="filterOperator('emapa')"><i class="fas fa-tint"></i> Agua (EMAPA)</button>
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-4xl mx-auto">
+                <div class="bg-white/10 p-4 rounded-lg backdrop-blur-sm">
+                    <h3 id="stat-clients" class="text-3xl font-bold text-blue-300">1000+</h3>
+                    <p>Clientes Felices</p>
+                </div>
+                <div class="bg-white/10 p-4 rounded-lg backdrop-blur-sm">
+                    <h3 id="stat-support" class="text-3xl font-bold text-blue-300">24/7</h3>
+                    <p>Soporte Disponible</p>
+                </div>
+                <div class="bg-white/10 p-4 rounded-lg backdrop-blur-sm">
+                    <h3 id="stat-guarantee" class="text-3xl font-bold text-blue-300">100%</h3>
+                    <p>Garantía Asegurada</p>
+                </div>
+                <div class="bg-white/10 p-4 rounded-lg backdrop-blur-sm">
+                    <h3 id="stat-exp" class="text-3xl font-bold text-blue-300">5+</h3>
+                    <p>Años de Experiencia</p>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="productos" class="py-16 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Nuestros Productos y Servicios</h2>
+            <p class="text-center text-gray-400 mb-8">Elige el que más te guste y comienza a disfrutar</p>
             
-            <div class="products-grid" id="productsGrid"></div>
-        </div>
-    </section>
-
-    <section class="features" id="caracteristicas">
-        <div class="container">
-            <div class="section-title">
-                <h2>¿Por Qué Elegirnos?</h2>
-                <p>Te ofrecemos la mejor experiencia de compra</p>
+            <!-- Filtros -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8" id="category-filters">
+                <button class="filter-btn bg-blue-600 px-4 py-2 rounded-full text-sm" data-filter="Todos">Todos</button>
+                <button class="filter-btn bg-gray-700 px-4 py-2 rounded-full text-sm hover:bg-blue-600" data-filter="Streaming">Streaming</button>
+                <button class="filter-btn bg-gray-700 px-4 py-2 rounded-full text-sm hover:bg-blue-600" data-filter="Recargas">Recargas</button>
+                <button class="filter-btn bg-gray-700 px-4 py-2 rounded-full text-sm hover:bg-blue-600" data-filter="Servicios">Servicios Básicos</button>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                    <h3>Garantía Total</h3>
-                    <p>Todos nuestros productos cuentan con garantía y soporte permanente</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
-                    <h3>Entrega Inmediata</h3>
-                    <p>Recibe tu producto en minutos después de confirmar tu pago</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
-                    <h3>Soporte 24/7</h3>
-                    <p>Estamos disponibles todo el día para ayudarte con cualquier consulta</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-tag"></i></div>
-                    <h3>Mejores Precios</h3>
-                    <p>Ofrecemos los precios más competitivos del mercado</p>
-                </div>
+
+            <!-- Grid de Productos (Se llena dinámicamente) -->
+            <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Los productos se inyectan aquí desde el Admin -->
             </div>
         </div>
     </section>
 
-    <footer id="contacto">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Alex Stream</h3>
-                    <p>Tu mejor entretenimiento en streaming, recargas y tecnología. Calidad garantizada al mejor precio.</p>
-                    <div class="social-links">
-                        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/593987360827" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Enlaces Rápidos</h3>
-                    <a href="#inicio">Inicio</a><br>
-                    <a href="#productos">Productos</a><br>
-                    <a href="#caracteristicas">Características</a><br>
-                    <a href="admin.html">Panel Admin</a>
-                </div>
-                <div class="footer-section">
-                    <h3>Contacto</h3>
-                    <p><i class="fab fa-whatsapp"></i> +593 98 736 0827</p>
-                    <p><i class="fas fa-envelope"></i> alexstream@email.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Ecuador</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Métodos de Pago</h3>
-                    <p>Transferencia Bancaria, Depósito, Efectivo</p>
-                    <p style="margin-top: 1rem; font-size: 0.95rem;"><i class="fas fa-lock"></i> Pagos 100% seguros</p>
-                </div>
+    <!-- Footer / Contacto -->
+    <footer id="contacto" class="bg-gray-900 py-12 border-t border-gray-800">
+        <div class="container mx-auto px-4 grid md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-xl font-bold text-blue-400 mb-4">Alex Stream</h3>
+                <p class="text-gray-400">Tu mejor entretenimiento en streaming, recargas y tecnología. Calidad garantizada.</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Alex Stream. Todos los derechos reservados.</p>
+            <div>
+                <h3 class="text-xl font-bold mb-4">Contacto</h3>
+                <ul class="space-y-2 text-gray-400">
+                    <li><i class="fas fa-phone mr-2 text-blue-400"></i> <span id="contact-phone">+593 98 736 0827</span></li>
+                    <li><i class="fas fa-envelope mr-2 text-blue-400"></i> <span id="contact-email">alexstream@email.com</span></li>
+                    <li><i class="fas fa-map-marker-alt mr-2 text-blue-400"></i> <span id="contact-location">Ecuador</span></li>
+                </ul>
             </div>
+            <div>
+                <h3 class="text-xl font-bold mb-4">Métodos de Pago</h3>
+                <p class="text-gray-400">Transferencia, Depósito, Efectivo.</p>
+                <p class="text-green-400 mt-2"><i class="fas fa-shield-alt"></i> Pagos 100% seguros</p>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 mt-8">
+            <p>&copy; 2026 Alex Stream. Todos los derechos reservados.</p>
         </div>
     </footer>
 
+    <!-- Script para cargar datos desde el Panel Admin -->
     <script>
-        let products = [
-            // STREAMING
-            { id: 1, name: "Netflix 1 Perfil", category: "streaming", price: 6.00, oldPrice: 0, description: "1 mes - 1 perfil", image: "netflix.png", badge: "Popular", active: true, operator: null },
-            { id: 2, name: "Disney+ 1 Pantalla", category: "streaming", price: 4.00, oldPrice: 0, description: "30 días - 1 pantalla", image: "Disney.png", badge: null, active: true, operator: null },
-            { id: 3, name: "Disney+ Premium 4 Pantallas", category: "streaming", price: 15.00, oldPrice: 0, description: "30 días - 4 pantallas HD", image: "Disney.png", badge: "Completo", active: true, operator: null },
-            { id: 4, name: "HBO Max 1 Pantalla", category: "streaming", price: 2.25, oldPrice: 0, description: "1 mes - 1 pantalla", image: "HBO-Max.png", badge: null, active: true, operator: null },
-            { id: 5, name: "HBO Max Completa 4 Pantallas", category: "streaming", price: 6.00, oldPrice: 0, description: "1 mes - 4 pantallas", image: "HBO-Max.png", badge: "Mejor Precio", active: true, operator: null },
-            { id: 6, name: "Crunchyroll Perfil", category: "streaming", price: 1.40, oldPrice: 0, description: "1 mes - Perfil individual", image: "Crunchyroll.png", badge: null, active: true, operator: null },
-            { id: 7, name: "Crunchyroll Completa", category: "streaming", price: 4.00, oldPrice: 0, description: "1 mes - Cuenta completa", image: "Crunchyroll.png", badge: null, active: true, operator: null },
-            { id: 8, name: "Paramount+ Completa", category: "streaming", price: 8.00, oldPrice: 0, description: "1 mes - Cuenta completa", image: "paramount.png", badge: null, active: true, operator: null },
-            { id: 9, name: "ViX Premium", category: "streaming", price: 4.00, oldPrice: 0, description: "1 mes - Premium", image: "ViX.png", badge: null, active: true, operator: null },
-            { id: 10, name: "FlujoTV 1 Mes", category: "streaming", price: 5.00, oldPrice: 0, description: "1 mes de servicio", image: "Flujo-TV.png", badge: null, active: true, operator: null },
-            { id: 11, name: "FlujoTV 3 Meses", category: "streaming", price: 14.00, oldPrice: 15.00, description: "3 meses - Ahorra $1", image: "Flujo-TV.png", badge: "Oferta", active: true, operator: null },
-            { id: 12, name: "FlujoTV 7 Meses", category: "streaming", price: 28.00, oldPrice: 35.00, description: "7 meses - Ahorra $7", image: "Flujo-TV.png", badge: "Popular", active: true, operator: null },
-            { id: 13, name: "FlujoTV 14 Meses", category: "streaming", price: 55.00, oldPrice: 70.00, description: "14 meses - Ahorra $15", image: "Flujo-TV.png", badge: "Super Oferta", active: true, operator: null },
-            { id: 14, name: "DirectV Go Perfil", category: "streaming", price: 8.00, oldPrice: 0, description: "1 mes - Perfil individual", image: "dgo.png", badge: null, active: true, operator: null },
-            { id: 15, name: "DGO + ECDF", category: "streaming", price: 10.00, oldPrice: 0, description: "1 mes - DGO + ECDF", image: "dgo.png", badge: "Combo", active: true, operator: null },
-            { id: 16, name: "Zapping Pro", category: "streaming", price: 9.50, oldPrice: 0, description: "1 mes - 1 pantalla - Solo TV", image: "zapp.png", badge: null, active: true, operator: null },
-            { id: 17, name: "Zapping Básico 2 Pantallas", category: "streaming", price: 15.00, oldPrice: 0, description: "2 pantallas - 1 mes", image: "zapp.png", badge: null, active: true, operator: null },
-            { id: 18, name: "Claro Video", category: "streaming", price: 3.00, oldPrice: 0, description: "1 mes de servicio", image: "clarovideo.png", badge: null, active: true, operator: null },
-            { id: 19, name: "Claro Video + ECDF", category: "streaming", price: 5.00, oldPrice: 0, description: "1 mes - Combo completo", image: "clarovideo.png", badge: "Combo", active: true, operator: null },
-            { id: 20, name: "Canva Pro Edu 6 Meses", category: "streaming", price: 5.00, oldPrice: 0, description: "6 meses - Cuenta educativa", image: "canva.png", badge: "Oferta", active: true, operator: null },
-            { id: 21, name: "Canva Pro Edu 12 Meses", category: "streaming", price: 10.00, oldPrice: 0, description: "12 meses - Cuenta educativa", image: "canva.png", badge: "Mejor Valor", active: true, operator: null },
-            { id: 22, name: "Canva Email 30 Días", category: "streaming", price: 1.25, oldPrice: 0, description: "30 días - Correo electrónico", image: "canva.png", badge: null, active: true, operator: null },
-            { id: 23, name: "Canva Email 3 Meses", category: "streaming", price: 2.75, oldPrice: 0, description: "3 meses - Correo electrónico", image: "canva.png", badge: "Popular", active: true, operator: null },
-            
-            // RECARGAS CLARO
-            { id: 24, name: "Claro 1GB 1 Día", category: "recargas", price: 1.05, oldPrice: 0, description: "1GB + 512MB + Llamadas Ilimitadas", image: "claro.png", badge: "Rápido", active: true, operator: "claro", features: ["1GB + 512MB", "Llamadas Ilimitadas", "100 SMS"] },
-            { id: 25, name: "Claro 1GB 1 Día Ilimitado", category: "recargas", price: 1.50, oldPrice: 0, description: "1GB Gratis + Llamadas Ilimitadas", image: "claro.png", badge: null, active: true, operator: "claro", features: ["1GB Gratis", "Llamadas Ilimitadas", "100 SMS a Claro"] },
-            { id: 26, name: "Claro 4GB 4 Horas", category: "recargas", price: 2.05, oldPrice: 0, description: "4GB Ilimitadas - Solo Megas", image: "claro.png", badge: null, active: true, operator: "claro", features: ["4GB Ilimitadas", "Solo 4 horas"] },
-            { id: 27, name: "Claro 2GB 2 Días", category: "recargas", price: 2.05, oldPrice: 0, description: "2GB + 1GB Gratis + Llamadas Ilimitadas", image: "claro.png", badge: null, active: true, operator: "claro", features: ["2GB + 1GB Gratis", "Llamadas Ilimitadas", "300 SMS a Claro"] },
-            { id: 28, name: "Claro 2GB 3 Días", category: "recargas", price: 2.50, oldPrice: 0, description: "2GB + 2GB + Llamadas Ilimitadas", image: "claro.png", badge: null, active: true, operator: "claro", features: ["2GB + 2GB", "Llamadas Ilimitadas", "300 SMS a Claro"] },
-            { id: 29, name: "Claro 4GB 3 Días", category: "recargas", price: 3.10, oldPrice: 0, description: "4GB + 3GB + 1GB Gratis", image: "claro.png", badge: "Popular", active: true, operator: "claro", features: ["4GB + 3GB + 1GB Gratis", "Llamadas Ilimitadas", "300 SMS a Claro"] },
-            { id: 30, name: "Claro 4GB 7 Días", category: "recargas", price: 3.50, oldPrice: 0, description: "9GB total (5GB + 2GB Gratis)", image: "claro.png", badge: null, active: true, operator: "claro", features: ["9GB Total", "5GB + 2GB Gratis", "Llamadas Ilimitadas", "300 SMS a Claro"] },
-            { id: 31, name: "Claro 5GB 10 Días", category: "recargas", price: 4.00, oldPrice: 0, description: "5GB + 1GB Gratis + Llamadas Ilimitadas", image: "claro.png", badge: null, active: true, operator: "claro", features: ["5GB + 1GB Gratis", "Llamadas Ilimitadas"] },
-            { id: 32, name: "Claro 3GB 15 Días", category: "recargas", price: 5.15, oldPrice: 0, description: "3GB + 5GB + 1GB Gratis", image: "claro.png", badge: null, active: true, operator: "claro", features: ["3GB + 5GB + 1GB Gratis", "Llamadas Ilimitadas"] },
-            { id: 33, name: "Claro 5GB 15 Días", category: "recargas", price: 5.50, oldPrice: 0, description: "5GB + 5GB + 1GB Gratis", image: "claro.png", badge: "Popular", active: true, operator: "claro", features: ["5GB + 5GB + 1GB Gratis", "Llamadas Ilimitadas"] },
-            { id: 34, name: "Claro 7GB 25 Días", category: "recargas", price: 8.00, oldPrice: 0, description: "7GB + 5GB + 1GB Gratis", image: "claro.png", badge: null, active: true, operator: "claro", features: ["7GB + 5GB + 1GB Gratis", "Llamadas Ilimitadas"] },
-            { id: 35, name: "Claro 10GB 30 Días", category: "recargas", price: 10.50, oldPrice: 0, description: "10GB + 6GB + 1GB Gratis", image: "claro.png", badge: "30 Días", active: true, operator: "claro", features: ["10GB + 6GB + 1GB Gratis", "Llamadas Ilimitadas"] },
-            { id: 36, name: "Claro 13GB 30 Días", category: "recargas", price: 12.50, oldPrice: 0, description: "13GB + 6GB + 1GB Gratis", image: "claro.png", badge: null, active: true, operator: "claro", features: ["13GB + 6GB + 1GB Gratis", "Llamadas Ilimitadas"] },
-            { id: 37, name: "Claro 15GB 30 Días", category: "recargas", price: 15.50, oldPrice: 0, description: "15GB (5GB + 2GB) + Llamadas Ilimitadas", image: "claro.png", badge: "Más Gigas", active: true, operator: "claro", features: ["15GB Total", "Llamadas Ilimitadas"] },
-            { id: 38, name: "Claro 20GB 30 Días", category: "recargas", price: 20.50, oldPrice: 0, description: "20GB (5GB + 2GB) + Llamadas Ilimitadas", image: "claro.png", badge: "Máximo", active: true, operator: "claro", features: ["20GB Total", "Llamadas Ilimitadas"] },
-            
-            // RECARGAS MOVISTAR
-            { id: 39, name: "Movistar 1GB 1 Día", category: "recargas", price: 1.05, oldPrice: 0, description: "1GB + 10 SMS + 30 min", image: "Movistar.png", badge: "Rápido", active: true, operator: "movistar", features: ["1GB", "10 SMS", "30 min", "Llamadas Ilimitadas a Movistar"] },
-            { id: 40, name: "Movistar 1GB 2 Días", category: "recargas", price: 1.50, oldPrice: 0, description: "Combo Agrandado - 1GB + 10 SMS + 30 min", image: "Movistar.png", badge: null, active: true, operator: "movistar", features: ["1GB", "10 SMS", "30 min", "Llamadas Ilimitadas a Movistar"] },
-            { id: 41, name: "Movistar 5GB 7 Días", category: "recargas", price: 3.00, oldPrice: 0, description: "5GB + 40 min Todo destino", image: "Movistar.png", badge: "Popular", active: true, operator: "movistar", features: ["5GB", "40 min Todo destino", "Llamadas Ilimitadas a Movistar"] },
-            { id: 42, name: "Movistar Bono Ilimitado 2 Días", category: "recargas", price: 3.00, oldPrice: 0, description: "Llamadas Ilimitadas a todas las operadoras", image: "Movistar.png", badge: null, active: true, operator: "movistar", features: ["Llamadas Ilimitadas", "Todas las operadoras", "2 días"] },
-            { id: 43, name: "Movistar 6GB 15 Días", category: "recargas", price: 5.00, oldPrice: 0, description: "6GB + 80 min Todo destino", image: "Movistar.png", badge: null, active: true, operator: "movistar", features: ["6GB", "80 min Todo destino", "Llamadas Ilimitadas a Movistar"] },
-            { id: 44, name: "Movistar 10GB 30 Días", category: "recargas", price: 9.00, oldPrice: 0, description: "10GB + 2GB Redes sociales + 100 min", image: "Movistar.png", badge: "30 Días", active: true, operator: "movistar", features: ["10GB + 2GB Redes", "100 min + 15 min LDI", "Llamadas Ilimitadas a Movistar"] },
-            { id: 45, name: "Movistar 12GB 30 Días", category: "recargas", price: 10.25, oldPrice: 0, description: "12GB + 2GB Redes + 120 min", image: "Movistar.png", badge: null, active: true, operator: "movistar", features: ["12GB + 2GB Redes", "120 min + 25 min LDI", "Llamadas Ilimitadas a Movistar"] },
-            { id: 46, name: "Movistar 17GB 30 Días", category: "recargas", price: 15.50, oldPrice: 0, description: "17GB + 2GB + 150 min + 30 min LDI", image: "Movistar.png", badge: "Máximo", active: true, operator: "movistar", features: ["17GB + 2GB", "10 SMS", "150 min + 30 min LDI", "Llamadas Ilimitadas a Movistar"] },
-            
-            // RECARGAS TUENTI
-            { id: 47, name: "Tuenti 1GB 1 Día", category: "recargas", price: 1.00, oldPrice: 0, description: "1GB + WhatsApp Gratis + Navegación Libre", image: "tuenti.jpg", badge: "Económico", active: true, operator: "tuenti", features: ["1GB", "WhatsApp Gratis", "50 SMS - 10 MIN", "Llamadas Ilimitadas"] },
-            { id: 48, name: "Tuenti 5GB 7 Días", category: "recargas", price: 3.00, oldPrice: 0, description: "5GB + WhatsApp Gratis + Navegación Libre", image: "tuenti.jpg", badge: null, active: true, operator: "tuenti", features: ["5GB", "WhatsApp Gratis", "50 SMS - 30 MIN", "Llamadas Ilimitadas"] },
-            { id: 49, name: "Tuenti 6GB 15 Días", category: "recargas", price: 5.00, oldPrice: 0, description: "6GB + WhatsApp Gratis + Navegación Libre", image: "tuenti.jpg", badge: "Popular", active: true, operator: "tuenti", features: ["6GB", "WhatsApp Gratis", "50 SMS - 70 MIN", "Llamadas Ilimitadas"] },
-            { id: 50, name: "Tuenti 10GB 30 Días", category: "recargas", price: 9.00, oldPrice: 0, description: "10GB + WhatsApp Gratis + 100 MIN", image: "tuenti.jpg", badge: "30 Días", active: true, operator: "tuenti", features: ["10GB", "WhatsApp Gratis", "Llamadas Ilimitadas", "50 SMS - 15 MIN LDI"] },
-            { id: 51, name: "Tuenti 12GB 30 Días", category: "recargas", price: 10.00, oldPrice: 0, description: "12GB + WhatsApp Gratis + 50 SMS", image: "tuenti.jpg", badge: null, active: true, operator: "tuenti", features: ["12GB", "WhatsApp Gratis", "Llamadas Ilimitadas", "50 SMS - 100 MIN - 25 MIN LDI"] },
-            { id: 52, name: "Tuenti 17GB 30 Días", category: "recargas", price: 15.00, oldPrice: 0, description: "17GB + WhatsApp Gratis + 2GB Redes", image: "tuenti.jpg", badge: "Mejor Valor", active: true, operator: "tuenti", features: ["17GB", "WhatsApp Gratis", "Llamadas Ilimitadas", "50 SMS - MIN ILIM - 150 MIN TD"] },
-            { id: 53, name: "Tuenti 25GB 30 Días", category: "recargas", price: 25.00, oldPrice: 0, description: "25GB + WhatsApp Gratis + 2GB Redes", image: "tuenti.jpg", badge: "Máximo", active: true, operator: "tuenti", features: ["25GB", "WhatsApp Gratis", "Llamadas Ilimitadas", "50 SMS - MIN ILIM - 60 MIN LDI"] },
-            
-            // RECARGAS AKI MÓVIL
-            { id: 54, name: "Aki 1GB 1 Día", category: "recargas", price: 1.05, oldPrice: 0, description: "1GB + 10 SMS Gratis + 10 MIN", image: "aki-movil.png", badge: "Económico", active: true, operator: "aki", features: ["1GB", "10 SMS Gratis", "Llamadas Ilimitadas 10 MIN"] },
-            { id: 55, name: "Aki 5GB 7 Días", category: "recargas", price: 2.99, oldPrice: 0, description: "5GB + 10 SMS Gratis + 50 MIN", image: "aki-movil.png", badge: null, active: true, operator: "aki", features: ["5GB", "10 SMS Gratis", "Llamadas Ilimitadas 50 MIN"] },
-            { id: 56, name: "Aki 6GB 15 Días", category: "recargas", price: 4.99, oldPrice: 0, description: "6GB + 10 SMS Gratis + 70 MIN", image: "aki-movil.png", badge: "Popular", active: true, operator: "aki", features: ["6GB", "10 SMS Gratis", "Llamadas Ilimitadas 70 MIN"] },
-            { id: 57, name: "Aki 8GB 20 Días", category: "recargas", price: 6.99, oldPrice: 0, description: "8GB + 10 SMS Gratis + 80 MIN", image: "aki-movil.png", badge: null, active: true, operator: "aki", features: ["8GB", "10 SMS Gratis", "Llamadas Ilimitadas 80 MIN"] },
-            { id: 58, name: "Aki 10GB 30 Días", category: "recargas", price: 8.99, oldPrice: 0, description: "10GB + 10 SMS Gratis + 100 MIN", image: "aki-movil.png", badge: "30 Días", active: true, operator: "aki", features: ["10GB", "10 SMS Gratis", "Llamadas Ilimitadas 100 MIN"] },
-            { id: 59, name: "Aki 14GB 30 Días", category: "recargas", price: 9.99, oldPrice: 0, description: "14GB + 50 SMS + 120 MIN", image: "aki-movil.png", badge: null, active: true, operator: "aki", features: ["14GB", "50 SMS Gratis", "Llamadas Ilimitadas 120 MIN", "10 MIN LD"] },
-            { id: 60, name: "Aki 19GB 30 Días", category: "recargas", price: 15.49, oldPrice: 0, description: "19GB + 50 SMS + 150 MIN", image: "aki-movil.png", badge: "Mejor Valor", active: true, operator: "aki", features: ["19GB", "50 SMS Gratis", "Llamadas Ilimitadas 150 MIN", "20 MIN LD"] },
-            { id: 61, name: "Aki 22GB 30 Días", category: "recargas", price: 19.99, oldPrice: 0, description: "22GB + 5GB Libre + 200 SMS", image: "aki-movil.png", badge: "Máximo", active: true, operator: "aki", features: ["22GB", "5GB Libre", "200 SMS", "300 MIN"] },
-            
-            // RECARGAS MAXI PLUS
-            { id: 62, name: "Maxi 512MB 1 Día", category: "recargas", price: 1.05, oldPrice: 0, description: "512MB + WhatsApp Gratis + 10 SMS", image: "maxi.png", badge: "Rápido", active: true, operator: "maxi", features: ["512MB", "WhatsApp Gratis", "Llamadas Ilimitadas 10 SMS", "10 MIN"] },
-            { id: 63, name: "Maxi 3GB 7 Días", category: "recargas", price: 3.00, oldPrice: 0, description: "3GB + WhatsApp Gratis + 10 SMS", image: "maxi.png", badge: null, active: true, operator: "maxi", features: ["3GB", "WhatsApp Gratis", "10 SMS - 30 MIN", "Navegación Libre"] },
-            { id: 64, name: "Maxi 3GB 15 Días", category: "recargas", price: 5.00, oldPrice: 0, description: "3GB + WhatsApp Gratis + 10 SMS", image: "maxi.png", badge: "Popular", active: true, operator: "maxi", features: ["3GB", "WhatsApp Gratis", "10 SMS - 70 MIN", "Navegación Libre"] },
-            { id: 65, name: "Maxi 4GB 20 Días", category: "recargas", price: 7.00, oldPrice: 0, description: "4GB + WhatsApp Gratis + 10 SMS", image: "maxi.png", badge: null, active: true, operator: "maxi", features: ["4GB", "WhatsApp Gratis", "10 SMS - 80 MIN", "Navegación Libre"] },
-            { id: 66, name: "Maxi 4GB 30 Días", category: "recargas", price: 8.00, oldPrice: 0, description: "4GB + WhatsApp Gratis + 10 SMS", image: "maxi.png", badge: null, active: true, operator: "maxi", features: ["4GB", "WhatsApp Gratis", "10 SMS - 70 MIN", "Llamadas Ilimitadas"] },
-            { id: 67, name: "Maxi 6GB 30 Días", category: "recargas", price: 9.00, oldPrice: 0, description: "6GB + WhatsApp Gratis + 4GB", image: "maxi.png", badge: null, active: true, operator: "maxi", features: ["6GB", "WhatsApp Gratis", "Llamadas Ilimitadas", "10 SMS - 100 MIN - 10 MIN LDI"] },
-            { id: 68, name: "Maxi 10GB 30 Días", category: "recargas", price: 10.25, oldPrice: 0, description: "10GB + WhatsApp Gratis + 4GB", image: "maxi.png", badge: "Popular", active: true, operator: "maxi", features: ["10GB", "WhatsApp Gratis", "Llamadas Ilimitadas", "50 SMS - 120 MIN - 10 MIN LDI"] },
-            { id: 69, name: "Maxi 15GB 30 Días", category: "recargas", price: 15.50, oldPrice: 0, description: "15GB + WhatsApp Gratis + 4GB", image: "maxi.png", badge: "Mejor Valor", active: true, operator: "maxi", features: ["15GB", "WhatsApp Gratis", "Llamadas Ilimitadas", "50 SMS - 150 MIN - 20 MIN LDI"] },
-            { id: 70, name: "Maxi 25GB 30 Días", category: "recargas", price: 30.81, oldPrice: 0, description: "25GB + 10GB Gratis + 100 SMS", image: "maxi.png", badge: "Máximo", active: true, operator: "maxi", features: ["25GB", "10GB Gratis", "Llamadas Ilimitadas", "100 SMS - 100 MIN LDI ILIM"] },
-            
-            // RECARGAS CNT
-            { id: 71, name: "CNT 1GB 1 Día", category: "recargas", price: 1.00, oldPrice: 0, description: "1GB + 512MB + 15 min + 50 SMS", image: "CNT.png", badge: "Rápido", active: true, operator: "cnt", features: ["1GB + 512MB", "Llamadas Ilimitadas 15 min", "50 SMS"] },
-            { id: 72, name: "CNT Instagram 1GB", category: "recargas", price: 1.00, oldPrice: 0, description: "1GB solo para Instagram - 1 día", image: "CNT.png", badge: "Red Social", active: true, operator: "cnt", features: ["1GB Instagram", "1 día"] },
-            { id: 73, name: "CNT Spotify 1GB", category: "recargas", price: 1.00, oldPrice: 0, description: "1GB solo para Spotify - 1 día", image: "CNT.png", badge: "Música", active: true, operator: "cnt", features: ["1GB Spotify", "1 día"] },
-            { id: 74, name: "CNT YouTube 1GB", category: "recargas", price: 1.00, oldPrice: 0, description: "1GB solo para YouTube - 1 día", image: "CNT.png", badge: "Video", active: true, operator: "cnt", features: ["1GB YouTube", "1 día"] },
-            { id: 75, name: "CNT Waze 1GB", category: "recargas", price: 1.00, oldPrice: 0, description: "1GB solo para Waze - 1 día", image: "CNT.png", badge: "Navegación", active: true, operator: "cnt", features: ["1GB Waze", "1 día"] },
-            { id: 76, name: "CNT 2GB 3 Días", category: "recargas", price: 2.00, oldPrice: 0, description: "2GB + 1GB + 512MB + 15 min + 50 SMS", image: "CNT.png", badge: null, active: true, operator: "cnt", features: ["2GB + 1GB + 512MB", "Llamadas Ilimitadas 15 min", "50 SMS"] },
-            { id: 77, name: "CNT 4GB 7 Días", category: "recargas", price: 3.00, oldPrice: 0, description: "4GB + 1GB + 35 min + 50 SMS", image: "CNT.png", badge: "Popular", active: true, operator: "cnt", features: ["4GB + 1GB", "Llamadas Ilimitadas 35 min", "50 SMS"] },
-            { id: 78, name: "CNT Combo Mixto 3GB", category: "recargas", price: 3.00, oldPrice: 0, description: "3GB 1 Día + SMS Ilimitados + Llamadas Ilimitadas", image: "CNT.png", badge: "Combo", active: true, operator: "cnt", features: ["3GB", "SMS Ilimitados", "Llamadas Ilimitadas"] },
-            { id: 79, name: "CNT 5GB 30 Días", category: "recargas", price: 5.00, oldPrice: 0, description: "5GB (4GB + 1GB) + 50 min + 50 SMS", image: "CNT.png", badge: null, active: true, operator: "cnt", features: ["5GB Total", "Llamadas Ilimitadas 50 min", "50 SMS"] },
-            { id: 80, name: "CNT 7GB 30 Días", category: "recargas", price: 6.00, oldPrice: 0, description: "7GB (4GB + 1GB) + 100 min + 50 SMS", image: "CNT.png", badge: null, active: true, operator: "cnt", features: ["7GB Total", "Llamadas Ilimitadas 100 min", "50 SMS"] },
-            { id: 81, name: "CNT 15GB 30 Días", category: "recargas", price: 10.00, oldPrice: 0, description: "15GB (4GB + 1GB) + 200 min + 50 SMS", image: "CNT.png", badge: "Popular", active: true, operator: "cnt", features: ["15GB Total", "Llamadas Ilimitadas 200 min", "50 SMS"] },
-            { id: 82, name: "CNT 25GB 30 Días", category: "recargas", price: 10.00, oldPrice: 0, description: "25GB - Recargas Ilimitadas", image: "CNT.png", badge: "Máximo", active: true, operator: "cnt", features: ["25GB", "Recargas Ilimitadas"] },
-            { id: 83, name: "CNT 20GB 30 Días", category: "recargas", price: 15.00, oldPrice: 0, description: "20GB (4GB + 1GB) + 300 min + 50 SMS", image: "CNT.png", badge: null, active: true, operator: "cnt", features: ["20GB Total", "Llamadas Ilimitadas 300 min", "50 SMS"] },
-            { id: 84, name: "CNT 25GB 30 Días Premium", category: "recargas", price: 20.00, oldPrice: 0, description: "25GB (4GB + 1GB) + 30 min Internet + 50 SMS", image: "CNT.png", badge: null, active: true, operator: "cnt", features: ["25GB Total", "30 min Internet", "50 SMS"] },
-            { id: 85, name: "CNT 45GB 30 Días", category: "recargas", price: 20.00, oldPrice: 0, description: "45GB - Recargas Ilimitadas", image: "CNT.png", badge: "Super Oferta", active: true, operator: "cnt", features: ["45GB", "Recargas Ilimitadas"] },
-            
-            // SERVICIOS BÁSICOS
-            { id: 86, name: "Pago de Luz EEASA", category: "utilities", price: 0, oldPrice: 0, description: "Pago de servicio eléctrico - EEASA Ambato", image: "eeasa.png", badge: "Servicio", active: true, operator: "eeasa", features: ["Pago de luz", "EEASA Ambato", "Procesamiento inmediato", "Comprobante digital"] },
-            { id: 87, name: "Pago de Agua EMAPA-EP", category: "utilities", price: 0, oldPrice: 0, description: "Pago de agua potable - EMAPA-EP Ambato", image: "emapa.png", badge: "Servicio", active: true, operator: "emapa", features: ["Pago de agua", "EMAPA-EP Ambato", "Procesamiento inmediato", "Comprobante digital"] },
-            
-            // MÚSICA
-            { id: 88, name: "Spotify Premium", category: "musica", price: 3.00, oldPrice: 9.99, description: "Individual sin anuncios", image: "", badge: "Popular", active: true, operator: null },
-            { id: 89, name: "YouTube Premium", category: "musica", price: 3.50, oldPrice: 11.99, description: "Sin anuncios + YouTube Music", image: "", badge: null, active: true, operator: null },
-            
-            // GIFT CARDS
-            { id: 90, name: "Gift Card Google Play $10", category: "giftcard", price: 11.00, oldPrice: 11.50, description: "$10 USD", image: "", badge: null, active: true, operator: null },
-            { id: 91, name: "Gift Card Apple $20", category: "giftcard", price: 21.00, oldPrice: 22.00, description: "$20 USD", image: "", badge: null, active: true, operator: null }
-        ];
+        document.addEventListener('DOMContentLoaded', () => {
+            const data = JSON.parse(localStorage.getItem('alexStreamData'));
+            if (!data) return; // Si no hay datos guardados, usa el HTML por defecto
 
-        let currentCategory = 'all';
-        let currentOperator = 'all';
+            // Actualizar Contacto
+            if (data.contact) {
+                document.getElementById('contact-phone').innerText = data.contact.phone || '';
+                document.getElementById('contact-email').innerText = data.contact.email || '';
+                document.getElementById('contact-location').innerText = data.contact.location || '';
+                // Actualizar links de WhatsApp si se cambia el número
+                const waLinks = document.querySelectorAll('a[href*="wa.me"]');
+                waLinks.forEach(link => {
+                    if(data.contact.whatsapp) link.href = `https://wa.me/${data.contact.whatsapp}`;
+                });
+            }
 
-        function getOperatorName(operator) {
-            const names = { 
-                claro: 'Claro', 
-                movistar: 'Movistar', 
-                tuenti: 'Tuenti', 
-                aki: 'Aki Móvil', 
-                maxi: 'Maxi Plus', 
-                cnt: 'CNT',
-                eeasa: 'EEASA',
-                emapa: 'EMAPA-EP'
-            };
-            return names[operator] || '';
-        }
+            // Actualizar Estadísticas
+            if (data.stats) {
+                document.getElementById('stat-clients').innerText = data.stats.clients || '0';
+                document.getElementById('stat-support').innerText = data.stats.support || '0';
+                document.getElementById('stat-guarantee').innerText = data.stats.guarantee || '0';
+                document.getElementById('stat-exp').innerText = data.stats.exp || '0';
+            }
 
-        function renderProducts() {
-            const grid = document.getElementById('productsGrid');
-            grid.innerHTML = '';
-            
-            let filtered = products.filter(p => p.active);
-            
-            if (currentCategory !== 'all') {
-                filtered = filtered.filter(p => p.category === currentCategory);
-            }
-            
-            if ((currentCategory === 'recargas' || currentCategory === 'utilities') && currentOperator !== 'all') {
-                filtered = filtered.filter(p => p.operator === currentOperator);
-            }
-            
-            const operatorTabs = document.getElementById('operatorTabs');
-            if (currentCategory === 'recargas' || currentCategory === 'utilities') {
-                operatorTabs.style.display = 'flex';
-            } else {
-                operatorTabs.style.display = 'none';
-            }
-            
-            filtered.forEach(product => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                
-                const priceDisplay = product.price > 0 
-                    ? `$${product.price.toFixed(2)}${product.oldPrice > 0 ? ` <span>$${product.oldPrice.toFixed(2)}</span>` : ''}` 
-                    : 'Consultar';
-                
-                const featuresHtml = product.features 
-                    ? `<div class="product-features">${product.features.map(f => `<div><i class="fas fa-check-circle"></i> ${f}</div>`).join('')}</div>`
-                    : '';
-                
-                const operatorTag = product.operator 
-                    ? `<span class="operator-tag">${getOperatorName(product.operator)}</span>` 
-                    : '';
-                
-                const whatsappText = product.price > 0 
-                    ? `Hola!%20Quiero%20comprar%20${encodeURIComponent(product.name)}`
-                    : `Hola!%20Quiero%20pagar%20${encodeURIComponent(product.name)}`;
-                
-                const imageHtml = product.image 
-                    ? `<img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'; this.parentElement.querySelector('.fallback-icon').style.display='block';">`
-                    : '';
-                const fallbackIcon = product.image ? '📦' : '📦';
-                
-                card.innerHTML = `
-                    ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
-                    ${operatorTag}
-                    <div class="product-image">
-                        ${imageHtml}
-                        <span class="fallback-icon" style="${product.image ? 'display:none;' : ''}">${fallbackIcon}</span>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">${product.category === 'utilities' ? 'Servicios Básicos' : product.category}</div>
-                        <h3 class="product-title">${product.name}</h3>
-                        <p class="product-description">${product.description}</p>
-                        ${featuresHtml}
-                        <div class="product-footer">
-                            <div class="product-price">${priceDisplay}</div>
-                            <a href="https://wa.me/593987360827?text=${whatsappText}" class="buy-btn" target="_blank"><i class="fab fa-whatsapp"></i> ${product.price > 0 ? 'Comprar' : 'Pagar'}</a>
+            // Actualizar Productos
+            if (data.products && data.products.length > 0) {
+                const grid = document.getElementById('products-grid');
+                grid.innerHTML = '';
+                data.products.forEach(p => {
+                    grid.innerHTML += `
+                        <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:scale-105 transition-transform product-card" data-category="${p.category}">
+                            <div class="text-4xl mb-4 text-blue-400"><i class="${p.icon || 'fas fa-box'}"></i></div>
+                            <h3 class="text-xl font-bold mb-2">${p.name}</h3>
+                            <p class="text-gray-400 mb-4">${p.description || 'Servicio premium con garantía.'}</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-green-400">${p.price}</span>
+                                <a href="https://wa.me/${data.contact?.whatsapp || '593987360827'}?text=Hola Alex, me interesa ${p.name}" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-sm">Comprar</a>
+                            </div>
                         </div>
-                    </div>`;
-                grid.appendChild(card);
-            });
-            
-            if (filtered.length === 0) {
-                grid.innerHTML = '<p style="text-align:center; grid-column: 1/-1; padding: 3rem; color: var(--gray);">No hay productos disponibles en esta categoría.</p>';
+                    `;
+                });
             }
-        }
-
-        function filterProducts(category) {
-            currentCategory = category;
-            currentOperator = 'all';
-            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            renderProducts();
-        }
-
-        function filterOperator(operator) {
-            currentOperator = operator;
-            document.querySelectorAll('.operator-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            renderProducts();
-        }
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
         });
-
-        renderProducts();
     </script>
 </body>
 </html>
